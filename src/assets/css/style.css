@@ -1,0 +1,132 @@
+@charset "UTF-8";
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: #212121;
+  font-family: "Lato", "Noto Sans JP", sans-serif;
+  /*IE(Internet Explorer)・Microsoft Edgeへの対応*/
+  -ms-overflow-style: none;
+  /*Firefoxへの対応*/
+  scrollbar-width: none;
+}
+
+/*Google Chrome、Safariへの対応*/
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.font-black-ops-one {
+  font-family: "Black Ops One", cursive;
+}
+
+.font-noto-sans-jp {
+  font-family: "Noto Sans JP", sans-serif;
+}
+
+#preload {
+  display: block;
+  position: absolute;
+  width: 100vw;
+  height: 200vh;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #000000;
+}
+#preload > #not-supported {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+#preload > #now-loading {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 2rem;
+  color: #ffffff;
+  font-size: 1.5rem;
+}
+
+#logo {
+  font-size: 1.5rem;
+}
+
+.roulette-container {
+  position: relative;
+  right: 0;
+  width: 100%;
+  /* min-width: 500px; */
+  height: 100vw;
+  max-height: max(700px, 100vh);
+  min-height: min(700px, 100vh);
+  /* overflow: hidden; */
+}
+
+.roulette-container > svg {
+  display: block;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  min-width: 720px;
+  max-height: 100vh;
+  background: transparent;
+}
+
+#roulette {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  transform: rotateZ(-90deg);
+  transition: none;
+}
+
+#roulette.move {
+  transform: rotateZ(-90deg);
+  transition: transform 5s cubic-bezier(0.6, 0, 0, 1);
+}
+
+.blink {
+  opacity: 0;
+  transition: opacity 0.25s linear;
+}
+
+.blink.on {
+  animation: blink-animation 1s 0.25s alternate cubic-bezier(0.5, 0.2, 0.8, 0.5) infinite;
+}
+
+@keyframes blink-animation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.75;
+  }
+}
+.footer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.footer > * {
+  padding: 4rem 0;
+  color: #ffffff;
+  font-size: 1.25rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+@media only screen and (max-width: 767px) {
+  .ui.form .fields {
+    margin-bottom: 2rem;
+  }
+}

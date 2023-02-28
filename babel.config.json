@@ -1,0 +1,13 @@
+{
+  "comments": true,
+  "minified": true,
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "modules": false,
+        "debug": true,
+      }
+    ]
+  ]
+}

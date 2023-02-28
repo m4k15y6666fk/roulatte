@@ -1,0 +1,83 @@
+{
+    "title": {
+        "ja": "ルーレット"
+    },
+    "not-supported": {
+        "ja": "このブラウザはサポートされていません"
+    },
+    "supported-browsers": {
+        "ja": "推奨ブラウザー："
+    },
+    "settings": {
+        "ja": "設定"
+    },
+    "basic": {
+        "ja": "基本設定"
+    },
+    "entire-display": {
+        "ja": "全体表示"
+    },
+    "shadow": {
+        "ja": "影"
+    },
+    "background": {
+        "ja": "背景"
+    },
+    "duration": {
+        "ja": "間隔"
+    },
+    "roulette-template": {
+        "ja": "テンプレート"
+    },
+    "select-your-template": {
+        "ja": "テンプレートを選択"
+    },
+    "change-template-name": {
+        "ja": "名前を変更"
+    },
+    "add-remove-template": {
+        "ja": "テンプレートの追加・削除"
+    },
+    "import-export-template": {
+        "ja": "テンプレートのインポート・エクスポート"
+    },
+    "add-choice": {
+        "ja": "ルーレットの選択肢を追加"
+    },
+    "reset-all": {
+        "ja": "すべてをリセット"
+    },
+    "cancel": {
+        "ja": "キャンセル"
+    },
+    "about": {
+        "ja": "このアプリについて"
+    },
+    "description": {
+        "ja": "カスタマイズ可能なルーレットです"
+    },
+    "languages": {
+        "ja": "言語"
+    },
+    "license": {
+        "ja": "ライセンス"
+    },
+    "creative-commons": {
+        "ja": "<a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/deed.ja\"><img alt=\"クリエイティブ・コモンズ・ライセンス\" style=\"border-width:0\" src=\"https://i.creativecommons.org/l/by/4.0/88x31.png\" /></a><br />この 作品 は <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/deed.ja\">クリエイティブ・コモンズ 表示 4.0 国際 ライセンス</a>の下に提供されています。"
+    },
+    "code": {
+        "ja": "ソースコード"
+    },
+    "donate": {
+        "ja": "寄付"
+    },
+    "author": {
+        "ja": "作者"
+    },
+    "reset": {
+        "ja": "リセット"
+    },
+    "want-to-reset": {
+        "ja": "本当にすべてをリセットしますか？"
+    }
+}

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient1955">
+      <stop
+         style="stop-color:#212121;stop-opacity:1;"
+         offset="0"
+         id="stop1951" />
+      <stop
+         style="stop-color:#212121;stop-opacity:0;"
+         offset="1"
+         id="stop1953" />
+    </linearGradient>
+  </defs>
+  <g
+     id="layer2"
+     style="display:none">
+    <rect
+       style="fill:#212121;fill-opacity:1;stroke:none"
+       id="rect264"
+       width="512"
+       height="512"
+       x="0"
+       y="0" />
+  </g>
+  <g
+     id="layer3">
+    <g
+       id="g1871"
+       transform="matrix(1.5366492,0,0,1.5366492,-289.78898,-4.9657154)">
+      <circle
+         style="fill:#29848e;fill-opacity:1;stroke:none;stroke-width:1.30822"
+         id="path981"
+         cx="256"
+         cy="256"
+         r="207.18643" />
+      <circle
+         style="fill:#212121;fill-opacity:1;stroke:none;stroke-width:0.278351"
+         id="path1867"
+         cx="256"
+         cy="256"
+         r="29.288134" />
+    </g>
+  </g>
+  <g
+     id="layer4">
+    <path
+       style="fill:#edc500;fill-opacity:0.991416;stroke:none;stroke-width:6.96265;stroke-dasharray:none;stroke-opacity:1"
+       id="path1926"
+       d="m 247.21999,196.33897 138.45815,-79.93884 -10e-6,159.87769 z"
+       transform="matrix(0.89349126,0,0,0.71434814,124.03517,248.1621)" />
+    <g
+       id="g2159"
+       transform="rotate(8.829422,103.4196,387.73064)"
+       style="display:none;stroke:#212121;stroke-width:5;stroke-dasharray:none;stroke-opacity:1">
+      <path
+         style="fill:none;fill-opacity:0.991416;stroke:#212121;stroke-width:5;stroke-dasharray:none;stroke-opacity:1"
+         d="m 438.96576,256.93956 -670.84056,261.85536 0.0496,-0.11346 670.74089,-261.81643 z"
+         id="path2015" />
+      <path
+         style="fill:none;fill-opacity:0.991416;stroke:#212121;stroke-width:5;stroke-dasharray:none;stroke-opacity:1"
+         d="M 234.37916,723.28775 -27.476195,52.447195 l 0.11346,0.0496 261.816425,670.740895 z"
+         id="path2015-8" />
+    </g>
+  </g>
+</svg>
