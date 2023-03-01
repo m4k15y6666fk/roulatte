@@ -1,4 +1,6 @@
 
+import { escape } from './util.mjs';
+
 import { openIDB, Settings } from './db.mjs';
 import RouletteStorage from './db-extra.mjs';
 
@@ -271,7 +273,7 @@ form_input_template.addEventListener('input', evt => {
     selectedTemplate().textContent = evt.target.value;
 
     $('#form-template-name-select').dropdown('get item').text(evt.target.value);
-    $('#form-template-name-select').dropdown('set text', evt.target.value);
+    $('#form-template-name-select').dropdown('set text', escape(evt.target.value));
     $('#form-template-name-select').dropdown('refresh');
 });
 

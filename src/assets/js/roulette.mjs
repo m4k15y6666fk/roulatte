@@ -1,15 +1,5 @@
 
-function color(j) {
-    const i = j % 3;
-
-    if (i === 0) {
-        return '#37b0be'
-    } else if (i === 1) {
-        return '#59c3cf'
-    } else if (i === 2) {
-        return '#2c8c96'
-    }
-}
+import { escape, unescape, color } from './util.mjs';
 
 
 class Cake {
@@ -20,7 +10,8 @@ class Cake {
         visible = true
     } = {}) {
 
-        this.text = text;
+        this._text = text;
+
         this.textColor = textColor;
         this.backgroundColor = backgroundColor;
 
@@ -35,6 +26,15 @@ class Cake {
 
     static isCake(cake) {
         return (cake._isCake === true);
+    }
+
+
+    get text() {
+        return escape(this._text);
+    }
+
+    set text(str) {
+        this._text = str;
     }
 
 
@@ -64,7 +64,7 @@ class Cake {
             }
         }
 
-        return `<h5 class="ui header form-cake-title" data-cake="${idx}">${idx + 1}. ${this.text}</h5>
+        return `<h5 class="ui header form-cake-title" data-cake="${idx}">${idx + 1}. ${ this.text }</h5>
                 <div class="fields">
                     <div class="two wide field">
                       <label>${i18n.visibility}</label>
@@ -74,7 +74,7 @@ class Cake {
                     </div>
                     <div class="six wide field">
                       <label>${i18n.title}</label>
-                      <input class="form-cake-text" data-cake="${idx}" type="text" name="label-${idx}[text]" value="${this.text}" ${disabled}>
+                      <input class="form-cake-text" data-cake="${idx}" type="text" name="label-${idx}[text]" value="${ this.text }" ${disabled}>
                     </div>
                     <div class="three wide field">
                         <label>${i18n.text}</label>
@@ -182,8 +182,13 @@ class Roulette extends Array {
     static toObject(roulette) {
         let clone = structuredClone(roulette);
 
-        return clone.map(({ text, textColor, backgroundColor, visible }) => {
-            return { text, textColor, backgroundColor, visible }
+        return clone.map(cake => {
+            return new Cake({
+                text: cake._text,
+                textColor: cake.textColor,
+                backgroundColor: cake.backgroundColor,
+                visible: cake.visible
+            });
         });
     }
 
@@ -205,8 +210,13 @@ class Roulette extends Array {
 
     static from(array) {
         return new Roulette(
-            ...array.map(({ text, textColor, backgroundColor, visible }) => {
-                return new Cake({ text, textColor, backgroundColor, visible });
+            ...array.map(cake => {
+                return new Cake({
+                    text: cake._text,
+                    textColor: cake.textColor,
+                    backgroundColor: cake.backgroundColor,
+                    visible: cake.visible
+                });
             })
         );
     }
