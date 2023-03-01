@@ -14,6 +14,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
+## [1.0.2] - 2023-03-02
+
+### Fixed
+- gulpfile.js: webmanifest for JP
+- src/assets/data/i18n.json
+- src/assets/js/db.mjs: if blocked code
+- src/index.html
+
+
 ## [1.0.1] - 2023-03-01
 
 ### Added

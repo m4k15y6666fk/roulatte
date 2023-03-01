@@ -86,6 +86,9 @@
                 closable: false,
                 allowMultiple: true
             });
+            $('#modal-database-blocked').modal({
+                closable: false
+            });
 
 
             document.querySelector('#reset-button').addEventListener('click', _ => {
@@ -112,15 +115,31 @@
                         console.error(event.target.result);
                     };
                     request.onsuccess = _ => {
-                        console.error('delete success');
-                    };
-
-                    setTimeout(_ => {
+                        console.log('delete success');
                         window.location.reload();
-
-                    }, 1000);
+                    };
                 }
             });
+
+
+            /*
+            document.querySelector('#form-scroll-button').addEventListener('click', (event) => {
+                document.querySelectorAll('.scrolling').forEach(el => {
+                    let y = 0;
+                    el.addEventListener('touchstart', e => {
+                        y = e.changedTouches[0].pageY
+                    });
+                    el.addEventListener('touchmove', e => {
+                        el.scrollBy(0, y - e.changedTouches[0].pageY);
+                        y = e.changedTouches[0].pageY
+                    });
+                });
+
+                event.target.classList.add('disabled');
+
+            }, { once: true });
+            */
+
 
             if (! window.structuredClone) {
                 document.querySelector('#preload').style.opacity = '0.8';
@@ -225,6 +244,13 @@
       <div class="header" data-i18n="settings">Settings</div>
       <div class="scrolling content" style="overflow-y: scroll; overscroll-behavior: contain;">
           <form class="ui form">
+              <!--
+              <h4 class="ui dividing header" data-i18n="i-cant-scroll">I can&#x27;t scroll</h4>
+              <a id="form-scroll-button" href="javascript:;" class="ui red basic icon button">
+                  <i class="angle double down icon"></i>
+              </a>
+              -->
+
               <h4 class="ui dividing header" data-i18n="basic">Basic</h4>
               <div class="fields">
                   <div class="four wide field">
@@ -417,8 +443,21 @@
         <p data-i18n="want-to-reset">Do you want to Reset all settings ?</p>
       </div>
       <div class="actions">
-        <div id="reset-button-really" class="ui red button" data-i18n="reset-all">Reset All</div>
+        <div id="reset-button-really" class="ui negative button" data-i18n="reset-all">Reset All</div>
         <div class="ui cancel button" data-i18n="cancel">Cancel</div>
+      </div>
+    </div>
+
+    <div id="modal-database-blocked" class="ui modal">
+      <i class="close red icon"></i>
+      <div class="header" data-i18n="database-access-blocked">
+        Database Access Blocked
+      </div>
+      <div class="content">
+        <p data-i18n="close-tabs">Please close other tabs which open this site.</p>
+      </div>
+      <div class="actions">
+        <div class="ui positive button">OK</div>
       </div>
     </div>
 </body>

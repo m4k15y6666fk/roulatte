@@ -61,6 +61,9 @@ async function webmanifest() {
 
     let json = JSON.parse(buffer.toString());
     json.start_url = "/ja";
+    json.name = 'ルーレット';
+    json.short_name = 'ルーレット';
+    json.description = 'カスタマイズ可能なルーレット'
 
     return await writeFile('./public/manifest-ja.webmanifest', JSON.stringify(json));
 }

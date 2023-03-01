@@ -4,6 +4,13 @@ function openIDB() {
         // データベースを開く
         const request = window.indexedDB.open('RouletteIndexedDB', 1);
 
+        request.onblocked = _ => {
+            // 他のタブがデータベースを読み込んでいる場合は、処理を進める前に
+            // それらを閉じなければなりません。
+            $('#modal-database-blocked').modal('hide others');
+            $('#modal-database-blocked').modal('show');
+        };
+
         request.onerror = (event) => {
             // このデータベースのリクエストに対するすべてのエラー用の
             // 汎用エラーハンドラー!
@@ -13,14 +20,32 @@ function openIDB() {
             const db = event.target.result;
             console.log('upgradeneeded');
 
-            db.createObjectStore('Roulettes', { keyPath: 'id', autoIncrement: true });
+            if (! db.objectStoreNames.contains('Roulettes')) {
+                db.createObjectStore('Roulettes', { keyPath: 'id', autoIncrement: true });
+            }
 
-            db.createObjectStore('Settings');
+            if (! db.objectStoreNames.contains('Settings')) {
+                db.createObjectStore('Settings');
+            }
 
+            // 別のページがバージョン変更を求めた場合に、通知されるようにするためのハンドラーを追加するようにしてください。
+            // データベースを閉じなければなりません。データベースを閉じると、別のページがデータベースをアップグレードできます。
+            // これを行わなければ、ユーザーがタブを閉じるまでデータベースはアップグレードされません。
+            db.onversionchange = _ => {
+                db.close();
+                window.location.reload();
+            };
         };
         request.onsuccess = (event) => {
             const db = event.target.result;
             console.log('success');
+
+            if (! db.onversionchange) {
+                db.onversionchange = _ => {
+                    db.close();
+                    window.location.reload();
+                };
+            }
 
             resolve(db);
         };
