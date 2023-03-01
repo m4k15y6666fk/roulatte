@@ -25,6 +25,12 @@ function mjs() {
                 .pipe(gulp.dest('./public'));
 }
 
+function service_worker() {
+    return gulp.src('./src/*.js', { base: './src' })
+                .pipe(babel())
+                .pipe(gulp.dest('./public'));
+}
+
 function scss() {
     return gulp.src('./src/assets/css/*.scss', { base: './src' })
                 .pipe(sass())
@@ -62,7 +68,6 @@ function copy() {
     const files = [
         './src/**/*.otf',
         './src/**/*.ttf',
-        './src/**/*.txt',
 
         './src/**/*.jpg',
         './src/**/*.png',
@@ -70,6 +75,9 @@ function copy() {
 
         './src/**/*.webmanifest',
         './src/**/*.json',
+
+        './src/**/*.txt',
+        './src/.gitkeep'
     ];
 
     return gulp.src(files, { base: './src' })
@@ -96,14 +104,23 @@ async function i18n() {
         return null;
     }
 
+
     document.querySelector('html').setAttribute('lang', 'ja');
+    document.querySelector('link[rel="canonical"]').href = "https://roulette.m4k15y6666fk.work/ja/";
+    document.querySelector('meta[property="og:url"]').setAttribute('content', "https://roulette.m4k15y6666fk.work/ja/");
+
     for (const key of Object.keys(i18n_object)) {
         document.querySelectorAll(`*[data-i18n="${ key }"]`).forEach(el => {
-            while (el.firstChild) {
-                el.removeChild( el.firstChild );
-            }
+            if (el.tagName.toUpperCase() === 'META') {
+                el.setAttribute('content', i18n_object[key].ja);
 
-            el.insertAdjacentHTML('beforeend', i18n_object[key].ja);
+            } else {
+                while (el.firstChild) {
+                    el.removeChild( el.firstChild );
+                }
+
+                el.insertAdjacentHTML('beforeend', i18n_object[key].ja);
+            }
         });
     }
 
@@ -117,6 +134,7 @@ exports.default = gulp.series(
     purge,
 
     mjs,
+    service_worker,
     scss,
     html,
     i18n,

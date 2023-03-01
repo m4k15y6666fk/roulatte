@@ -15,10 +15,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 ## [1.0.1] - 2023-03-01
+
 ### Added
 - public/.gitkeep
+- src/service-worker.js
+
+### Fixed
+- src/index.html: meta tags
+- package.json: version
+- gulpfile.js: service-worker.js
 
 
 ## [1.0.0] - 2023-03-01
+
 ### Added
 - initial release
