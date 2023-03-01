@@ -1,14 +1,23 @@
 {
-  "name": "term_test",
+  "name": "roulette",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Customizable Roulette",
+  "homepage": "https://github.com/m4k15y6666fk/roulette#readme",
+  "repository": "https://github.com/m4k15y6666fk/roulette.git",
+  "funding": "https://ofuse.me/m4k15y6666fk",
+  "engines": {
+    "node": "18.x"
+  },
+  "main": "public/index.html",
   "scripts": {
     "build": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [ "web" ],
+  "author": {
+    "name": "M4K-15Y-6666-FK",
+    "email": "m4k15y6666fk@outlook.com"
+  },
   "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.21.0",
