@@ -56,12 +56,13 @@ function purge() {
     });
 }
 
-function webmanifest() {
-    return gulp.src('./src/**/*.webmanifest', { base: './src' })
-                .pipe(rename({
-                    extname: '.json',
-                }))
-                .pipe(gulp.dest('./public'));
+async function webmanifest() {
+    const buffer = await readFile('./src/manifest.webmanifest');
+
+    let json = JSON.parse(buffer.toString());
+    json.start_url = "/ja";
+
+    return await writeFile('./public/manifest-ja.webmanifest', JSON.stringify(json));
 }
 
 function copy() {
@@ -107,6 +108,7 @@ async function i18n() {
 
     document.querySelector('html').setAttribute('lang', 'ja');
     document.querySelector('link[rel="canonical"]').href = "https://roulette.m4k15y6666fk.work/ja/";
+    document.querySelector('link[rel="manifest"]').href = "/manifest-ja.webmanifest";
     document.querySelector('meta[property="og:url"]').setAttribute('content', "https://roulette.m4k15y6666fk.work/ja/");
 
     for (const key of Object.keys(i18n_object)) {

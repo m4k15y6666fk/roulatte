@@ -1,7 +1,7 @@
 {
     "theme_color": "#212121",
     "background_color": "#212121",
-    "display": "standalone",
+    "display": "browser",
     "orientation": "portrait",
     "scope": "/",
     "start_url": "/",
