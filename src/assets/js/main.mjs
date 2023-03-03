@@ -332,6 +332,9 @@ form_template_add_button.addEventListener('click', async _ => {
 });
 
 const form_template_remove_button = document.querySelector('#form-template-remove-button');
+if (await RouletteStorage.countTemplates() <= 1) {
+    form_template_remove_button.classList.add('disabled');
+}
 form_template_remove_button.addEventListener('click', async _ => {
     if (await RouletteStorage.countTemplates() >= 2) {
         await RouletteStorage.removeTemplate(id);
@@ -343,9 +346,9 @@ form_template_remove_button.addEventListener('click', async _ => {
         $('#form-template-name-select').dropdown('refresh');
 
         $('#form-template-name-select').dropdown('set selected', id).trigger('change');
-        //form_select_template.dispatchEvent(new Event('change'));
 
         if (await RouletteStorage.countTemplates() <= 1) {
+            form_select_template.dispatchEvent(new Event('change'));
             form_template_remove_button.classList.add('disabled');
         }
 

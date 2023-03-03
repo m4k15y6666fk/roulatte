@@ -24,6 +24,8 @@ self.addEventListener("install", (event) => {
       "/assets/js/main.mjs",
       "/assets/js/roulette.mjs",
       "/assets/js/util.mjs",
+
+      "/sha256.txt"
     ])
   );
 });
@@ -107,7 +109,7 @@ const cacheFirst = async (request) => {
 };
 
 self.addEventListener('fetch', (event) => {
-    let re = new RegExp(regExpURL('post', location.origin));
+    let re = new RegExp(regExpURL('/sha256.txt', location.origin));
     if (re.test(event.request.url)) {
         event.respondWith(fetchOrEmpty(event.request));
     } else {

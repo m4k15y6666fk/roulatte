@@ -134,6 +134,13 @@ async function i18n() {
 }
 
 
+async function sha256() {
+    const { default: _sha256 } = await import('./scripts/sha256.mjs');
+
+    return await writeFile('./public/sha256.txt', await _sha256('./public'));
+}
+
+
 
 exports.default = gulp.series(
     purge,
@@ -145,5 +152,7 @@ exports.default = gulp.series(
     i18n,
     webmanifest,
 
-    copy
+    copy,
+
+    sha256
 );

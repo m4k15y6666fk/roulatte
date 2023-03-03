@@ -64,7 +64,7 @@
     <script defer type="module" src="/assets/js/main.mjs"></script>
     -->
     <script type="text/javascript">
-        const registerServiceWorker = async _ => {
+        async function registerServiceWorker() {
             if ('serviceWorker' in navigator) {
                 try {
                     const registration = await navigator.serviceWorker.register(
@@ -81,15 +81,23 @@
                     } else if (registration.active) {
                         console.debug('Service worker active');
                     }
+
+                    return registration;
+
                 } catch (error) {
-                    console.error(`Registration failed with ${error}`);
+                    throw new Error(`Registration failed with ${error}`);
                 }
             }
+
+            throw new Error('not support serviceWorker');
         };
-        registerServiceWorker();
 
 
-        window.addEventListener('load', _ => {
+        window.addEventListener('load', async _ => {
+            const registration = await registerServiceWorker()
+                                        .catch(err => console.error(err));
+
+
             $('#modal-info').modal();
             $('#modal-setting, #modal-reset').modal({
                 closable: false,
@@ -100,12 +108,41 @@
             });
 
 
+            document.querySelector('#logo').addEventListener('click', async _ => {
+                let remote = await fetch('/sha256.txt').catch(_ => undefined);
+                if (remote) {
+                    remote = await remote.text();
+                }
+
+                let local = await caches.match('/sha256.txt');
+                if (local) {
+                    local = await local.text();
+                }
+
+                if (remote && remote !== local) {
+                    console.log('not same');
+                    document.querySelector('#update-notification').style.display = '';
+                }
+                $('#modal-info').modal('show');
+            });
+
             document.querySelector('#reset-button').addEventListener('click', _ => {
                 $('#modal-reset').modal('hide others');
                 $('#modal-reset').modal('show');
             });
 
             document.querySelector('#reload-button').addEventListener('click', _ => {
+                window.location.reload();
+            });
+
+            document.querySelector('#update-button').addEventListener('click', async _ => {
+                const keys = await window.caches.keys();
+                await Promise.all( keys.map(key => caches.delete(key)) );
+
+                if (registration && registration.unregister) {
+                    await registration.unregister();
+                }
+
                 window.location.reload();
             });
 
@@ -123,10 +160,19 @@
                     request.onerror = (event) => {
                         console.error(event.target.result);
                     };
-                    request.onsuccess = _ => {
+                    request.onsuccess = async _ => {
                         console.log('delete success');
+
+                        const keys = await window.caches.keys();
+                        await Promise.all( keys.map(key => caches.delete(key)) );
+
+                        if (registration && registration.unregister) {
+                            await registration.unregister();
+                        }
+
                         window.location.reload();
                     };
+
                 }
             });
 
@@ -194,7 +240,7 @@
     </div>
 
     <div id="menu" class="ui inverted secondary menu">
-        <a id="logo" class="item font-black-ops-one" href="javascript:$('#modal-info').modal('show');">
+        <a id="logo" class="item font-black-ops-one" href="javascript:;">
             Roulette
         </a>
         <div class="right icon menu">
@@ -350,7 +396,7 @@
       </div>
       <div class="actions">
         <div id="reset-button" class="ui left floated red button" data-i18n="reset-all">Reset All</div>
-        <div id="reload-button" class="ui left floated teal button ok" data-i18n="reload">Reload</div>
+        <div id="reload-button" class="ui left floated positive button" data-i18n="reload">Reload</div>
         <div class="ui cancel button" data-i18n="cancel">Cancel</div>
       </div>
     </div>
@@ -363,6 +409,9 @@
       <div class="scrolling content" style="overflow-y: scroll; overscroll-behavior: contain;">
         <h4 class="ui dividing header">Roulette</h4>
         <p data-i18n="description">Custumizable Roulette</p>
+        <p id="update-notification"
+            data-i18n="update-available"
+            style="display: none; font-weight: bold;">※ Update is Available !</p>
 
         <h4 class="ui dividing header" data-i18n="languages">Languages</h4>
         <ul class="ui list">
@@ -438,6 +487,7 @@
         </div>
       </div>
       <div class="actions">
+        <div id="update-button" class="ui left floated primary ok button" data-i18n="update">Update</div>
         <div class="ui positive button">OK</div>
       </div>
     </div>
