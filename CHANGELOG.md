@@ -14,6 +14,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 
+
+## [1.1.0] - 2023-03-04
+
+### Added
+- scripts/sha256.mjs
+- src/assets/img/ofuse-cover.png
+
+### Fixed
+- src/assets/js/main.mjs: fix template remove button
+- src/index.html: add update button
+- src/service-worker.js
+- gulpfile.js: calculate shasum
+
+
+
 ## [1.0.2] - 2023-03-02
 
 ### Fixed
@@ -21,6 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - src/assets/data/i18n.json
 - src/assets/js/db.mjs: if blocked code
 - src/index.html
+
 
 
 ## [1.0.1] - 2023-03-01
@@ -33,6 +49,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - src/index.html: meta tags
 - package.json: version
 - gulpfile.js: service-worker.js
+- src/assets/data/i18n.json
+
 
 
 ## [1.0.0] - 2023-03-01
