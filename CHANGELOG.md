@@ -15,6 +15,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+## [1.1.1] - 2023-03-12
+
+### Added
+- .npmrc
+
+### Fixed
+- src/assets/css/style.scss: GPU accelaration
+- src/assets/js/main.mjs
+- src/index.html: open modal-info when "caches" is not supported
+
+
+
 ## [1.1.0] - 2023-03-04
 
 ### Added

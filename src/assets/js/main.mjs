@@ -370,7 +370,7 @@ function roulette_init(event = new Event('click')) {
     }
 
     roulette.classList.remove('move');
-    roulette.style.transform = `rotateZ(0deg)`;
+    roulette.style.transform = `rotate3d(0, 0, 1, 0)`;
 
     roulette_container.addEventListener('click', roulette_start, { once: true });
 }
@@ -385,7 +385,7 @@ async function roulette_start(event = new Event('click')) {
 
 
     roulette.classList.add('move');
-    roulette.style.transform = `rotateZ(${ init_rotate + rotate }deg)`;
+    roulette.style.transform = `rotate3d(0, 0, 1, ${ init_rotate + rotate }deg)`;
 
     setTimeout(_ => {
         const visibles = Roulette.onlyVisible(template.roulette);

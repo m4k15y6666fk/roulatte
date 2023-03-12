@@ -89,23 +89,38 @@ body::-webkit-scrollbar{
     max-height: 100vh;
 
     background: transparent;
+
+    transform: rotate3d(0, 0, 1, 0);
+    perspective: 1000px;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
 }
 
+
 #roulette {
+    will-change: transform;
+
     user-select: none;
 
-    transform: rotateZ(-90deg);
+    transform: rotate3d(0, 0, 1, -90deg);
     transition: none;
 }
 
 #roulette.move {
-    transform: rotateZ(-90deg);
+    transform: rotate3d(0, 0, 1, -90deg);
     transition: transform 5s cubic-bezier(.6, 0, 0, 1);
+}
+
+
+.svg-cake-blink {
+    will-change: opacity;
 }
 
 .blink {
     opacity: 0;
-    transition: opacity .25s linear;
+    /* transition: opacity .25s linear; */
 }
 
 .blink.on {
