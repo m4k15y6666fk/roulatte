@@ -1,4 +1,10 @@
 
+html {
+    width: 100vw;
+    overflow-x: hidden;
+}
+
+
 body {
     margin: 0;
     padding: 0;
@@ -19,6 +25,7 @@ body {
 body::-webkit-scrollbar{
     display: none;
 }
+
 
 .font-black-ops-one {
     font-family: 'Black Ops One', cursive;
